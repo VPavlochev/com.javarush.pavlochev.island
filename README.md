@@ -55,11 +55,12 @@ JavaRush Module 2 Final Project - Island Simulation
 
 
 # Архитектура
+```
 Main → ScheduledExecutorService → DayRunner → ExecutorService → AnimalLifeCycleTask
 ↓
 CountDownLatch
 ↓
-StatisticsTask
+StatisticsTask```
 
 # Ключевые компоненты:
 
