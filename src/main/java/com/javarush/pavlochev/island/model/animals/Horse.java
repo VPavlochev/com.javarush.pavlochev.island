@@ -8,8 +8,4 @@ public class Horse extends Herbivore {
         super("Horse", Configuration.INITIAL_WEIGHT, Configuration.MAX_WEIGHT_HORSE);
     }
 
-    @Override
-    public Horse multiply() {
-        return new Horse();
-    }
 }

@@ -8,8 +8,4 @@ public class Wolf extends Predator {
         super("Wolf", Configuration.INITIAL_WEIGHT, Configuration.MAX_WEIGHT_WOLF);
     }
 
-    @Override
-    public Wolf multiply() {
-        return new Wolf();
-    }
 }

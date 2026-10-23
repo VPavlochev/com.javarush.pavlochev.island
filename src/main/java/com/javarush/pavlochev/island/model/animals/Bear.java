@@ -8,8 +8,4 @@ public class Bear extends Predator {
         super("Bear", Configuration.INITIAL_WEIGHT, Configuration.MAX_WEIGHT_BEAR);
     }
 
-    @Override
-    public Bear multiply() {
-        return new Bear();
-    }
 }

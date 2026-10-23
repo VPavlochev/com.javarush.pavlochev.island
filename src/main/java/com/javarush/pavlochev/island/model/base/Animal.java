@@ -44,7 +44,8 @@ public abstract class Animal extends Organism {
     }
 
     public Animal multiply() {
-        return null;
+        return com.javarush.pavlochev.island.model.factory.AnimalFactory.create(this.getClass());
+
     }
 
     public void die() {
