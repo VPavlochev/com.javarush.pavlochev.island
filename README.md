@@ -135,44 +135,38 @@ CountDownLatch синхронизирует статистику после за
 Класс AnimalEmoji возвращает эмодзи по классу животного
 Статистика выводится с иконками для наглядности
 
-# Структура проекта
+##  Структура проекта
+
+```
 src/main/java/com/javarush/pavlochev/island/
-
 ├── config/
-
 │   ├── Configuration.java      # Все параметры + эмодзи
 │   └── JsonConfig.java         # JSON-конфигурация (синглтон)
-
 ├── model/
-
 │   ├── animals/                # 15 классов животных
 │   ├── base/
-
 │   │   ├── Animal.java         # Базовый класс + ID + UnderLock
 │   │   ├── Herbivore.java
 │   │   ├── Organism.java
 │   │   └── Predator.java       # Метод hunt()
-
 │   ├── factory/
-│   │   ── AnimalFactory.java   # Создание через рефлексию
+│   │   └── AnimalFactory.java  # Создание через рефлексию
 │   ├── Island.java             # Синглтон
 │   ├── Location.java           # Потокобезопасная клетка
-│   ── Plant.java
-
+│   └── Plant.java
 ├── tasks/
 │   ├── AnimalLifeCycleTask.java
 │   ├── DayRunner.java
 │   ├── PlantGrowTask.java
 │   └── StatisticsTask.java
-
 ├── util/
 │   ├── EatUtil.java            # Вероятности поедания
 │   └── AnimalEmoji.java        # Эмодзи для видов
-└── Main.java
-
+── Main.java
 src/main/resources/
 ├── config.json                 # JSON-конфигурация
 └── logback.xml                 # Настройки логгера
+```
 
 # Запуск
 
