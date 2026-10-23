@@ -3,36 +3,22 @@ package com.javarush.pavlochev.island.model.base;
 import com.javarush.pavlochev.island.config.Configuration;
 import com.javarush.pavlochev.island.model.Location;
 import com.javarush.pavlochev.island.model.Plant;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
 public abstract class Animal extends Organism {
+
+    @Setter
     private double weight;
     private final double maxWeight;
+    @Setter
     private Location location;
 
     protected Animal(String type, double initialWeight, double maxWeight) {
         super(type);
         this.weight = initialWeight;
         this.maxWeight = maxWeight;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = Math.min(weight, maxWeight);
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public double getMaxWeight() {
-        return maxWeight;
     }
 
     public boolean eat(Organism food) {
