@@ -2,14 +2,15 @@ package com.javarush.pavlochev.island.tasks;
 
 import com.javarush.pavlochev.island.model.Location;
 import com.javarush.pavlochev.island.model.base.Animal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-// Задача вывода статистики по животным на острове.
-// Считает количество особей каждого вида по всей матрице локаций.
-
 public class StatisticsTask implements Runnable {
+    private static final Logger log = LoggerFactory.getLogger(StatisticsTask.class);
+
     private final Location[][] locations;
 
     public StatisticsTask(Location[][] locations) {
@@ -28,10 +29,10 @@ public class StatisticsTask implements Runnable {
             }
         }
 
-        System.out.println("--- Статистика острова ---");
+        log.info("--- Статистика острова ---");
         stats.forEach((animalClass, count) ->
-                System.out.println(animalClass.getSimpleName() + ": " + count)
+                log.info("{}: {}", animalClass.getSimpleName(), count)
         );
-        System.out.println("--------------------------");
+        log.info("--------------------------");
     }
 }
