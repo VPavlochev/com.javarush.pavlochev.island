@@ -14,6 +14,7 @@ JavaRush Module 2 Final Project - Island Simulation
 - **Умирают от голода**, если вес падает до нуля
 
 #  Пример вывода
+...
 === Статистика острова ===
 Всего хищников: 1183
 Всего травоядных: 3007 🐇
@@ -33,6 +34,7 @@ Buffalo: 17
 Deer: 240
 🦅 Eagle: 348
 🐇 Rabbit: 551
+...
 
 # Архитектура
 Main → ScheduledExecutorService → DayRunner → ExecutorService → AnimalLifeCycleTask
@@ -116,7 +118,6 @@ CountDownLatch синхронизирует статистику после за
 Статистика выводится с иконками для наглядности
 
 # Структура проекта
-
 src/main/java/com/javarush/pavlochev/island/
 ├── config/
 │   ├── Configuration.java      # Все параметры + эмодзи
