@@ -88,7 +88,6 @@ CountDownLatch синхронизирует статистику после за
 
 Структура проекта:
 
-```
 src/main/java/com/javarush/pavlochev/island/
 ├── config/
 │   ├── Configuration.java
@@ -116,7 +115,8 @@ src/main/java/com/javarush/pavlochev/island/
 src/main/resources/
 ├── config.json
 └── logback.xml
-```
+
+
 Автор:
 Валерий Павлочев
 Java Developer | AI Prompt Engineer
