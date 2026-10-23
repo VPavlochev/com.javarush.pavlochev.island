@@ -1,4 +1,6 @@
 package com.javarush.pavlochev.island.config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // Конфигурация симуляции острова.
 // Все параметры вынесены сюда для централизованного управления.
@@ -131,4 +133,28 @@ public final class Configuration {
     public static final int GOAT_MOVE_DISTANCE = 2;
     public static final int DUCK_MOVE_DISTANCE = 3;
     public static final int CATERPILLAR_MOVE_DISTANCE = 1;
+
+    // Инициализация конфигурации из JSON (опционально).
+    // Если JSON не загружен — используются значения по умолчанию.
+
+    public static void initFromJson() {
+        try {
+            JsonConfig jsonConfig = JsonConfig.getInstance();
+            JsonConfig.ConfigData data = jsonConfig.getData();
+
+            // Размеры острова
+            if (data.islandSize != null) {
+                // X и Y — final, поэтому нельзя изменить.
+                // Но можно использовать данные из JSON в Main при создании острова
+                log.info("Размеры острова из JSON: {}x{}", data.islandSize.x, data.islandSize.y);
+            }
+
+            log.info("JSON конфигурация применена");
+        } catch (Exception e) {
+            log.warn("Используем конфигурацию по умолчанию (JSON не загружен)");
+        }
+    }
+
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Configuration.class);
+
 }

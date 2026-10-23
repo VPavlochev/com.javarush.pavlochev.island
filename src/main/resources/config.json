@@ -1,0 +1,26 @@
+{
+  "islandSize": {
+    "x": 100,
+    "y": 20
+  },
+  "maxPlantsPerLocation": 100,
+  "predators": {
+    "Wolf": {"maxPerLocation": 6, "initialWeight": 50, "maxWeight": 100, "moveDistance": 4},
+    "Bear": {"maxPerLocation": 4, "initialWeight": 300, "maxWeight": 600, "moveDistance": 1},
+    "Eagle": {"maxPerLocation": 8, "initialWeight": 5, "maxWeight": 10, "moveDistance": 10},
+    "Snake": {"maxPerLocation": 8, "initialWeight": 2, "maxWeight": 4, "moveDistance": 1},
+    "Fox": {"maxPerLocation": 6, "initialWeight": 15, "maxWeight": 30, "moveDistance": 3}
+  },
+  "herbivores": {
+    "Rabbit": {"maxPerLocation": 50, "initialWeight": 2, "maxWeight": 4, "moveDistance": 2},
+    "Horse": {"maxPerLocation": 20, "initialWeight": 200, "maxWeight": 400, "moveDistance": 4},
+    "Mouse": {"maxPerLocation": 80, "initialWeight": 0.5, "maxWeight": 1, "moveDistance": 1},
+    "Deer": {"maxPerLocation": 10, "initialWeight": 100, "maxWeight": 200, "moveDistance": 3},
+    "Sheep": {"maxPerLocation": 30, "initialWeight": 50, "maxWeight": 100, "moveDistance": 1},
+    "Boar": {"maxPerLocation": 15, "initialWeight": 80, "maxWeight": 160, "moveDistance": 2},
+    "Buffalo": {"maxPerLocation": 5, "initialWeight": 400, "maxWeight": 800, "moveDistance": 1},
+    "Goat": {"maxPerLocation": 25, "initialWeight": 40, "maxWeight": 80, "moveDistance": 2},
+    "Duck": {"maxPerLocation": 20, "initialWeight": 3, "maxWeight": 6, "moveDistance": 3},
+    "Caterpillar": {"maxPerLocation": 100, "initialWeight": 0.1, "maxWeight": 0.2, "moveDistance": 1}
+  }
+}

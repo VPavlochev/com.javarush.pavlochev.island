@@ -14,6 +14,9 @@ public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws InterruptedException {
+        // Инициализация из JSON (опционально)
+        Configuration.initFromJson();
+
         log.info("Запуск симуляции острова {}x{}", Configuration.X, Configuration.Y);
 
         Location[][] locations = new Location[Configuration.X][Configuration.Y];
@@ -25,16 +28,18 @@ public class Main {
 
         populateIsland(locations);
 
-        ExecutorService workerPool = Executors.newFixedThreadPool(4);
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        try (ExecutorService workerPool = Executors.newFixedThreadPool(4);
+             ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1)) {
 
-        DayRunner dayRunner = new DayRunner(locations, workerPool);
-        ScheduledFuture<?> scheduledFuture = scheduler.scheduleAtFixedRate(dayRunner, 0, 3, TimeUnit.SECONDS);
+            DayRunner dayRunner = new DayRunner(locations, workerPool);
+            ScheduledFuture<?> scheduledFuture = scheduler.scheduleAtFixedRate(dayRunner, 0, 3, TimeUnit.SECONDS);
 
-        Thread.sleep(30000);
-        scheduledFuture.cancel(false);
-        workerPool.shutdown();
-        scheduler.shutdown();
+            Thread.sleep(30000);
+            scheduledFuture.cancel(false);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            log.error("Симуляция прервана", e);
+        }
 
         log.info("Симуляция завершена");
     }
@@ -49,7 +54,7 @@ public class Main {
         }
 
         addAnimals(locations, Wolf.class, Configuration.MAX_WOLF / 2);
-        addAnimals(locations, Bear.class, Configuration.MAX_BEAR / 2);
+        addAnimals(locations, Bear.class, Math.max(1, Configuration.MAX_BEAR / 2));
         addAnimals(locations, Eagle.class, Configuration.MAX_EAGLE / 2);
         addAnimals(locations, Snake.class, Configuration.MAX_SNAKE / 2);
         addAnimals(locations, Fox.class, Configuration.MAX_FOX / 2);
