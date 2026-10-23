@@ -1,11 +1,14 @@
 package com.javarush.pavlochev.island.tasks;
 
+import com.javarush.pavlochev.island.config.Configuration;
+import com.javarush.pavlochev.island.util.AnimalEmoji;
 import com.javarush.pavlochev.island.model.Location;
 import com.javarush.pavlochev.island.model.base.Animal;
 import com.javarush.pavlochev.island.model.base.Predator;
 import com.javarush.pavlochev.island.model.base.Herbivore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,13 +42,22 @@ public class StatisticsTask implements Runnable {
         }
 
         log.info("=== Статистика острова ===");
-        log.info("Всего хищников: {}", totalPredators);
-        log.info("Всего травоядных: {}", totalHerbivores);
-        log.info("Всего растений: {}", totalPlants);
+        log.info("Всего хищников: {} {}", totalPredators, Configuration.EMOJI_WOLF);
+        log.info("Всего травоядных: {} {}", totalHerbivores, Configuration.EMOJI_RABBIT);
+        log.info("Всего растений: {} {}", totalPlants, Configuration.EMOJI_PLANT);
         log.info("--- Повидовая статистика ---");
-        stats.forEach((animalClass, count) ->
-                log.info("{}: {}", animalClass.getSimpleName(), count)
-        );
+
+        stats.forEach((animalClass, count) -> {
+            try {
+                Animal example = com.javarush.pavlochev.island.model.factory.AnimalFactory.create(animalClass);
+                String emoji = AnimalEmoji.getEmoji(example);
+                log.info("{} {}: {}", emoji, animalClass.getSimpleName(), count);
+            } catch (Exception e) {
+                log.info("❓ {}: {}", animalClass.getSimpleName(), count);
+            }
+        });
+
+
         log.info("==========================");
     }
 }

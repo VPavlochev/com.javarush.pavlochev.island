@@ -157,4 +157,23 @@ public final class Configuration {
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Configuration.class);
 
+    // Эмодзи для псевдо-графики
+    public static final String EMOJI_WOLF = "\uD83D\uDC3A";
+    public static final String EMOJI_BEAR = "\uD83D\uDC3B";
+    public static final String EMOJI_EAGLE = "\uD83E\uDD85";
+    public static final String EMOJI_SNAKE = "\uD83D\uDC0D";
+    public static final String EMOJI_FOX = "\uD83E\uDD8A";
+
+    public static final String EMOJI_RABBIT = "\uD83D\uDC07";
+    public static final String EMOJI_HORSE = "\uD83D\uDC34";
+    public static final String EMOJI_MOUSE = "\uD83D\uDC2D";
+    public static final String EMOJI_DEER = "\uD83E\uDD8C";
+    public static final String EMOJI_SHEEP = "\uD83D\uDC11";
+    public static final String EMOJI_BOAR = "\uD83D\uDC17";
+    public static final String EMOJI_BUFFALO = "\uD83D\uDC03";
+    public static final String EMOJI_GOAT = "\uD83D\uDC10";
+    public static final String EMOJI_DUCK = "\uD83E\uDD86";
+    public static final String EMOJI_CATERPILLAR = "\uD83D\uDC1B";
+    public static final String EMOJI_PLANT = "\uD83C\uDF3F";
+
 }
