@@ -51,7 +51,7 @@ public abstract class Animal extends Organism {
         }
     }
 
-    public boolean tick() {
+    public boolean consumeEnergy() {
         this.weight -= Configuration.WEIGHT_LOSS_PER_TICK;
         if (this.weight <= 0) {
             die();

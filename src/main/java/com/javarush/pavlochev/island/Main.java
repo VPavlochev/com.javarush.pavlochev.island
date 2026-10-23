@@ -79,7 +79,7 @@ public class Main {
 
             // Такт: потеря веса, смерть от голода
             for (Animal animal : location.getAnimals()) {
-                if (animal.tick()) {
+                if (animal.consumeEnergy()) {
                     System.out.println(animal.getType() + " умер от голода");
                 }
             }
