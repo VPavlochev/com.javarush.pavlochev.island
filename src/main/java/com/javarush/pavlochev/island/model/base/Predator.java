@@ -5,6 +5,4 @@ public abstract class Predator extends Animal {
         super(type, initialWeight, maxWeight);
     }
 
-    protected abstract int getMaxPerLocation();
-    protected abstract int getMoveDistance();
 }
