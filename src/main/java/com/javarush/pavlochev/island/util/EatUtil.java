@@ -1,7 +1,7 @@
 package com.javarush.pavlochev.island.util;
 
 import com.javarush.pavlochev.island.config.Configuration;
-import com.javarush.pavlochev.island.model.Animal;
+import com.javarush.pavlochev.island.model.base.Animal;
 
 import java.util.concurrent.ThreadLocalRandom;
 

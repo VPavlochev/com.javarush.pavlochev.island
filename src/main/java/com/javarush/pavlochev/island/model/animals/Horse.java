@@ -1,7 +1,7 @@
 package com.javarush.pavlochev.island.model.animals;
 
 import com.javarush.pavlochev.island.config.Configuration;
-import com.javarush.pavlochev.island.model.Herbivore;
+import com.javarush.pavlochev.island.model.base.Herbivore;
 
 public class Horse extends Herbivore {
     public Horse() {

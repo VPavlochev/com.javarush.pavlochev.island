@@ -1,6 +1,6 @@
 package com.javarush.pavlochev.island.model;
 
-import com.javarush.pavlochev.island.config.Configuration;
+import com.javarush.pavlochev.island.model.base.Organism;
 
 public class Plant extends Organism {
     private double weight;

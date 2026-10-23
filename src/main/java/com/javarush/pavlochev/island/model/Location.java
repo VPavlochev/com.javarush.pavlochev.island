@@ -1,5 +1,7 @@
 package com.javarush.pavlochev.island.model;
 
+import com.javarush.pavlochev.island.model.base.Animal;
+
 import java.util.ArrayList;
 import java.util.List;
 

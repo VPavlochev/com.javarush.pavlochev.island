@@ -1,7 +1,7 @@
 package com.javarush.pavlochev.island;
 
 import com.javarush.pavlochev.island.config.Configuration;
-import com.javarush.pavlochev.island.model.Animal;
+import com.javarush.pavlochev.island.model.base.Animal;
 import com.javarush.pavlochev.island.model.Location;
 import com.javarush.pavlochev.island.model.Plant;
 import com.javarush.pavlochev.island.model.animals.Bear;

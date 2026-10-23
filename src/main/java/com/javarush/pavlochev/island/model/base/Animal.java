@@ -1,6 +1,8 @@
-package com.javarush.pavlochev.island.model;
+package com.javarush.pavlochev.island.model.base;
 
 import com.javarush.pavlochev.island.config.Configuration;
+import com.javarush.pavlochev.island.model.Location;
+import com.javarush.pavlochev.island.model.Plant;
 
 public abstract class Animal extends Organism {
     private double weight;
