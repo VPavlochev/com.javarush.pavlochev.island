@@ -2,50 +2,102 @@ package com.javarush.pavlochev.island.model;
 
 import com.javarush.pavlochev.island.config.Configuration;
 import com.javarush.pavlochev.island.model.base.Animal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
+// Клетка игрового поля.
+// Все публичные методы синхронизированы.
+// Методы с суффиксом UnderLock вызываются только внутри synchronized-блока.
 
- // Клетка игрового поля.
- // Потокобезопасна: использует CopyOnWriteArrayList для животных и растений.
 public class Location {
-    private final List<Animal> animals = new CopyOnWriteArrayList<>();
-    private final List<Plant> plants = new CopyOnWriteArrayList<>();
+    private static final Logger log = LoggerFactory.getLogger(Location.class);
 
-    public List<Animal> getAnimals() {
+    private final List<Animal> animals = new ArrayList<>();
+    private final List<Plant> plants = new ArrayList<>();
+
+    // ========== Публичные методы (захватывают lock) ==========
+
+    public synchronized void addAnimal(Animal animal) {
+        addAnimalUnderLock(animal);
+    }
+
+    public synchronized void removeAnimal(Animal animal) {
+        removeAnimalUnderLock(animal);
+    }
+
+    public synchronized void addPlant(Plant plant) {
+        plants.add(plant);
+    }
+
+    public synchronized void removePlant(Plant plant) {
+        plants.remove(plant);
+    }
+
+    public synchronized List<Animal> getAnimals() {
+        return new ArrayList<>(animals); // Возвращаем копию для безопасности
+    }
+
+    public synchronized List<Plant> getPlants() {
+        return new ArrayList<>(plants);
+    }
+
+    public synchronized boolean isMaxFor(Animal animal) {
+        return isMaxForUnderLock(animal);
+    }
+
+    public synchronized long countType(Class<? extends Animal> animalClass) {
+        return countTypeUnderLock(animalClass);
+    }
+
+    // ========== UnderLock методы (вызываются внутри synchronized) ==========
+
+    // Возвращает список животных. Вызывать только внутри synchronized(location).
+
+    public List<Animal> animalsUnderLock() {
         return animals;
     }
 
-    public List<Plant> getPlants() {
+    // Возвращает список растений. Вызывать только внутри synchronized(location).
+
+    public List<Plant> plantsUnderLock() {
         return plants;
     }
 
-    public void addAnimal(Animal animal) {
+    // Считает количество животных конкретного вида.
+    // Вызывать только внутри synchronized(location).
+
+    public long countTypeUnderLock(Class<? extends Animal> animalClass) {
+        return animals.stream()
+                .filter(a -> a.getClass().equals(animalClass))
+                .count();
+    }
+
+    // Проверяет, достигнут ли максимум особей данного вида.
+    // Вызывать только внутри synchronized(location).
+
+    public boolean isMaxForUnderLock(Animal animal) {
+        long count = countTypeUnderLock(animal.getClass());
+        return count >= getMaxPerLocation(animal);
+    }
+
+    // Добавляет животное. Вызывать только внутри synchronized(location).
+
+    public void addAnimalUnderLock(Animal animal) {
         animals.add(animal);
         animal.setLocation(this);
     }
 
-    public void removeAnimal(Animal animal) {
+    // Удаляет животное. Вызывать только внутри synchronized(location).
+
+    public void removeAnimalUnderLock(Animal animal) {
         animals.remove(animal);
         animal.setLocation(null);
     }
 
-    public void addPlant(Plant plant) {
-        plants.add(plant);
-    }
-
-    public void removePlant(Plant plant) {
-        plants.remove(plant);
-    }
-
-    // Проверяет, достигнут ли максимум особей данного вида на локации.
-
-    public boolean isMaxFor(Animal animal) {
-        long count = animals.stream()
-                .filter(a -> a.getClass().equals(animal.getClass()))
-                .count();
-        return count >= getMaxPerLocation(animal);
-    }
+    // ========== Приватные методы ==========
 
     private int getMaxPerLocation(Animal animal) {
         String className = animal.getClass().getSimpleName();
@@ -67,13 +119,5 @@ public class Location {
             case "Caterpillar" -> Configuration.MAX_CATERPILLAR;
             default -> 0;
         };
-    }
-
-    // Подсчёт животных конкретного вида на локации.
-
-    public long countType(Class<? extends Animal> animalClass) {
-        return animals.stream()
-                .filter(a -> a.getClass().equals(animalClass))
-                .count();
     }
 }
