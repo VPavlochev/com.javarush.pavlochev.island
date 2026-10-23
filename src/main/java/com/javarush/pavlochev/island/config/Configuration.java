@@ -14,11 +14,11 @@ public final class Configuration {
     public static final int MAX_PLANT = 100;
 
     // Максимальное количество хищников на локации
-    public static final int MAX_WOLF = 2;
-    public static final int MAX_BEAR = 1;
-    public static final int MAX_EAGLE = 2;
-    public static final int MAX_SNAKE = 4;
-    public static final int MAX_FOX = 2;
+    public static final int MAX_WOLF = 6;
+    public static final int MAX_BEAR = 4;
+    public static final int MAX_EAGLE = 4;
+    public static final int MAX_SNAKE = 8;
+    public static final int MAX_FOX = 6;
 
     // Максимальное количество травоядных на локации
     public static final int MAX_RABBIT = 50;
@@ -71,7 +71,7 @@ public final class Configuration {
     public static final double CATERPILLAR_MAX_WEIGHT = 0.2;
 
     // Потеря веса за такт (для всех животных)
-    public static final double WEIGHT_LOSS_PER_TICK = 1.0;
+    public static final double WEIGHT_LOSS_PER_TICK = 0.1;
 
     // Вероятности поедания хищниками (проценты)
     // Волк

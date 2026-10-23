@@ -29,8 +29,8 @@ public abstract class Predator extends Animal {
                 // Синхронизируем, чтобы жертва не умерла дважды и вес обновился корректно
                 synchronized (currentLocation) {
                     if (prey.isAlive()) {
-                        // Хищник набирает вес (50% от веса жертвы, но не больше максимума)
-                        this.setWeight(Math.min(getMaxWeight(), this.getWeight() + prey.getWeight() * 0.5));
+                        // Хищник набирает вес (70% от веса жертвы, но не больше максимума)
+                        this.setWeight(Math.min(getMaxWeight(), this.getWeight() + prey.getWeight()));
                         prey.die(); // Жертва умирает
                         log.debug("{} съел {}", this.getLabel(), prey.getLabel());
                     }
