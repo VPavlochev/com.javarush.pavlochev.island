@@ -5,7 +5,16 @@ import com.javarush.pavlochev.island.model.base.Herbivore;
 
 public class Horse extends Herbivore {
     public Horse() {
-        super("Horse", Configuration.INITIAL_WEIGHT, Configuration.MAX_WEIGHT_HORSE);
+        super("Horse", Configuration.HORSE_WEIGHT, Configuration.HORSE_MAX_WEIGHT);
     }
 
+    @Override
+    protected int getMaxPerLocation() {
+        return Configuration.MAX_HORSE;
+    }
+
+    @Override
+    protected int getMoveDistance() {
+        return Configuration.HORSE_MOVE_DISTANCE;
+    }
 }

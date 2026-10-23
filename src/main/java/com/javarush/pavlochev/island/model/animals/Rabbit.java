@@ -5,7 +5,16 @@ import com.javarush.pavlochev.island.model.base.Herbivore;
 
 public class Rabbit extends Herbivore {
     public Rabbit() {
-        super("Rabbit", Configuration.INITIAL_WEIGHT, Configuration.MAX_WEIGHT_RABBIT);
+        super("Rabbit", Configuration.RABBIT_WEIGHT, Configuration.RABBIT_MAX_WEIGHT);
     }
 
+    @Override
+    protected int getMaxPerLocation() {
+        return Configuration.MAX_RABBIT;
+    }
+
+    @Override
+    protected int getMoveDistance() {
+        return Configuration.RABBIT_MOVE_DISTANCE;
+    }
 }
